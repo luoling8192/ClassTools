@@ -1,2 +1,15 @@
-# ClassTools
-一个简单的班级管理系统（看板）
+# umi project
+
+## Getting Started
+
+Install dependencies,
+
+```bash
+$ yarn
+```
+
+Start the dev server,
+
+```bash
+$ yarn start
+```
