@@ -1,6 +1,7 @@
 import common from '@/common';
 import { useEffect, useState } from 'react';
 import { notification, Skeleton } from 'antd';
+import styles from '../styles/homework.less';
 
 function SingleHomeWork({ subject }: { subject: string }) {
   let subject_name: any = {
@@ -29,6 +30,7 @@ function SingleHomeWork({ subject }: { subject: string }) {
           })
         ).data;
 
+        // TODO: 封装
         if (json['success'] !== 1) {
           notification.error({
             message: 'Error',
@@ -46,11 +48,11 @@ function SingleHomeWork({ subject }: { subject: string }) {
       }
     };
 
-    fetch();
-  });
+    setInterval(fetch, 1000);
+  }, []);
 
   return (
-    <div>
+    <div className={styles.single}>
       <h2>{subject_name[subject]}</h2>
       {subjects}
     </div>
@@ -61,9 +63,9 @@ export default function Homework() {
   const subjects = ['ch', 'ma', 'en', 'phy', 'chem', 'bio', 'ban'];
 
   return (
-    <div>
+    <div className={`box ${styles.box}`}>
       {subjects.map((i) => (
-        <SingleHomeWork subject={i} />
+        <SingleHomeWork key={i} subject={i} />
       ))}
     </div>
   );
