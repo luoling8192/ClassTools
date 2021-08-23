@@ -12,6 +12,6 @@ API在[ClassTools-Backend](https://github.com/rain15z3/ClassTools-Backend)。
 - [x] 作业获取
 - [ ] 标语获取
 - [x] 高考倒计时
-- [ ] 作业修改
+- [x] 作业修改
 - [ ] 标语修改
 - [ ] 壁纸更换
