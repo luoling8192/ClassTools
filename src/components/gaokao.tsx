@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { notification, Skeleton } from 'antd';
-import common from '@/common';
+import { Skeleton } from 'antd';
+import { fetch } from '@/utils/fetch';
 
 export default function Gaokao() {
   const [gaokao, setGaokao] = useState(
@@ -8,21 +8,11 @@ export default function Gaokao() {
   );
 
   useEffect(() => {
-    const fetch = async () => {
-      let json: any = (await common.ax.get('/gaokao')).data;
+    setInterval(async () => {
+      let json: any = await fetch('/gaokao');
 
-      // TODO: 封装
-      if (json['success'] !== 1) {
-        notification.error({
-          message: 'Error',
-          description: json['err'] || 'null',
-        });
-      } else {
-        setGaokao(<p>{json.data['span']}</p>);
-      }
-    };
-
-    setInterval(fetch, 1000);
+      setGaokao(<p>{json.data['span']}</p>);
+    }, 1000);
   }, []);
 
   return (

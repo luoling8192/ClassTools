@@ -1,7 +1,7 @@
-import common from '@/common';
 import { useEffect, useState } from 'react';
-import { notification, Skeleton } from 'antd';
-import styles from '../styles/homework.less';
+import { Skeleton } from 'antd';
+import { fetch } from '@/utils/fetch';
+import styles from '@/styles/homework.less';
 
 function SingleHomeWork({ subject }: { subject: string }) {
   let subject_name: any = {
@@ -19,36 +19,16 @@ function SingleHomeWork({ subject }: { subject: string }) {
   );
 
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        let query: any = {};
-        query[subject] = 1;
+    setInterval(async () => {
+      let query: any = {};
+      query[subject] = 1;
 
-        let json: any = (
-          await common.ax.get('/homework', {
-            params: query,
-          })
-        ).data;
+      let json: any = await fetch('/homework', query);
 
-        // TODO: 封装
-        if (json['success'] !== 1) {
-          notification.error({
-            message: 'Error',
-            description: json['err'] || 'null',
-          });
-        } else {
-          if (json.data[subject] === '') json.data[subject] = '暂无';
-          setSubjects(<p>{json.data[subject]}</p>);
-        }
-      } catch (e) {
-        notification.error({
-          message: 'Error',
-          description: e,
-        });
-      }
-    };
+      if (json.data[subject] === '') json.data[subject] = '暂无';
 
-    setInterval(fetch, 1000);
+      setSubjects(<p>{json.data[subject]}</p>);
+    }, 1000);
   }, []);
 
   return (
