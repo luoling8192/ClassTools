@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
-import { Skeleton } from 'antd';
+import styles from '@/styles/gaokao.less';
 import { fetch } from '@/utils/fetch';
+import { Skeleton } from 'antd';
+import moment from 'moment';
+import { useEffect, useState } from 'react';
 
 export default function Gaokao() {
   const [gaokao, setGaokao] = useState(
@@ -8,16 +10,19 @@ export default function Gaokao() {
   );
 
   useEffect(() => {
-    setInterval(async () => {
+    const fetchSource = async () => {
       let json: any = await fetch('/gaokao');
+      setGaokao(<p className={styles.gaokao}>{json.data['span']}</p>);
+    };
 
-      setGaokao(<p>{json.data['span']}</p>);
-    }, 1000);
+    fetchSource();
   }, []);
 
   return (
     <div className={'box'}>
-      <h2>高考倒计时</h2>
+      <p className={styles.date}>
+        {moment(Date.now()).format('YYYY年MM月DD日')}
+      </p>
       {gaokao}
     </div>
   );
