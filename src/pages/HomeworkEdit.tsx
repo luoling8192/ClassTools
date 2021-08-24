@@ -5,30 +5,23 @@ import { fetch } from '@/utils/fetch';
 import { Button, Form, Input, Modal, notification, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
-function SingleHomeworkItem({
-  subject,
-  homework,
-}: {
-  subject: string;
-  homework: string;
-}) {
+function SingleHomeworkItem({ subject }: { subject: string }) {
   return (
     <Form.Item label={subject_name[subject]} name={subject}>
-      <Input.TextArea rows={1} value={homework} />
+      <Input.TextArea rows={1} />
     </Form.Item>
   );
 }
 
 export default function HomeworkEditPage() {
   const [loading, setLoading] = useState(true);
-  const [homework, setHomework] = useState(subject_name);
   const [form] = Form.useForm();
 
   useEffect(() => {
     const fetchSource = async () => {
       let json: any = await fetch('/homework', subject_name);
-      setHomework(json.data);
       setLoading(false);
+      form.setFieldsValue(json.data);
     };
 
     fetchSource();
@@ -57,7 +50,7 @@ export default function HomeworkEditPage() {
         <h1 style={{ textAlign: 'center' }}>作业编辑</h1>
         <Form layout={'vertical'} form={form} className={styles.form}>
           {subjects.map((i) => (
-            <SingleHomeworkItem key={i} subject={i} homework={homework[i]} />
+            <SingleHomeworkItem key={i} subject={i} />
           ))}
 
           <Form.Item style={{ textAlign: 'right' }}>
