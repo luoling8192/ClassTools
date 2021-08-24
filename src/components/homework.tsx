@@ -15,21 +15,6 @@ export const subject_name: any = {
 
 export const subjects = ['ch', 'ma', 'en', 'phy', 'chem', 'bio', 'ban'];
 
-function SingleHomeWork({
-  subject,
-  homework,
-}: {
-  subject: string;
-  homework: string;
-}) {
-  return (
-    <div className={styles.single}>
-      <h2>{subject_name[subject]}</h2>
-      <p>{homework}</p>
-    </div>
-  );
-}
-
 export default function Homework() {
   const [homework, setHomework]: any = useState({});
   const [loading, setLoading] = useState(true);
@@ -51,7 +36,10 @@ export default function Homework() {
         {subjects.map((i) => {
           if (homework[i] !== '')
             return (
-              <SingleHomeWork key={i} subject={i} homework={homework[i]} />
+              <div className={styles.single}>
+                <h2>{subject_name[i]}</h2>
+                <p>{homework[i]}</p>
+              </div>
             );
         })}
       </Spin>
