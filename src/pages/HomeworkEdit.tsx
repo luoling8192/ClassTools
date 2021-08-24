@@ -5,14 +5,6 @@ import { fetch } from '@/utils/fetch';
 import { Button, Form, Input, Modal, notification, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 
-function SingleHomeworkItem({ subject }: { subject: string }) {
-  return (
-    <Form.Item label={subject_name[subject]} name={subject}>
-      <Input.TextArea rows={1} />
-    </Form.Item>
-  );
-}
-
 export default function HomeworkEditPage() {
   const [loading, setLoading] = useState(true);
   const [form] = Form.useForm();
@@ -50,7 +42,9 @@ export default function HomeworkEditPage() {
         <h1 style={{ textAlign: 'center' }}>作业编辑</h1>
         <Form layout={'vertical'} form={form} className={styles.form}>
           {subjects.map((i) => (
-            <SingleHomeworkItem key={i} subject={i} />
+            <Form.Item key={i} label={subject_name[i]} name={i}>
+              <Input.TextArea rows={1} />
+            </Form.Item>
           ))}
 
           <Form.Item style={{ textAlign: 'right' }}>
