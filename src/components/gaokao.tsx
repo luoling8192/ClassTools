@@ -12,7 +12,9 @@ export default function Gaokao() {
   useEffect(() => {
     const fetchSource = async () => {
       let json: any = await fetch('/gaokao');
-      setGaokao(<p className={styles.gaokao}>{json.data['span']}</p>);
+
+      if (json.success)
+        setGaokao(<p className={styles.gaokao}>{json.data['span']}</p>);
     };
 
     fetchSource();
