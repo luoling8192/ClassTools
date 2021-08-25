@@ -10,8 +10,11 @@ export default function Schedule() {
   useEffect(() => {
     const fetchSource = async () => {
       let json: any = await fetch('/schedule');
-      setSchedule(json.data);
-      setLoading(false);
+
+      if (json.success) {
+        setSchedule(json.data);
+        setLoading(false);
+      }
     };
 
     fetchSource();
@@ -20,11 +23,12 @@ export default function Schedule() {
   return (
     <div className={`box ${styles.box}`}>
       <Spin spinning={loading}>
-        {schedule[0].map((i: any) => (
-          <div className={styles.single}>
-            <p>{i}</p>
-          </div>
-        ))}
+        {!loading &&
+          schedule[0].map((i) => (
+            <div className={styles.single}>
+              <p>{i}</p>
+            </div>
+          ))}
       </Spin>
     </div>
   );

@@ -22,8 +22,11 @@ export default function Homework() {
   useEffect(() => {
     const fetchSource = async () => {
       let json: any = await fetch('/homework', subject_name);
-      setHomework(json.data);
-      setLoading(false);
+
+      if (json.success) {
+        setHomework(json.data);
+        setLoading(false);
+      }
     };
 
     fetchSource();
@@ -33,15 +36,16 @@ export default function Homework() {
   return (
     <div className={`box ${styles.box}`}>
       <Spin spinning={loading}>
-        {subjects.map((i) => {
-          if (homework[i] !== '')
-            return (
-              <div className={styles.single}>
-                <h2>{subject_name[i]}</h2>
-                <p>{homework[i]}</p>
-              </div>
-            );
-        })}
+        {!loading &&
+          subjects.map((i) => {
+            if (homework[i] !== '')
+              return (
+                <div className={styles.single}>
+                  <h2>{subject_name[i]}</h2>
+                  <p>{homework[i]}</p>
+                </div>
+              );
+          })}
       </Spin>
     </div>
   );
