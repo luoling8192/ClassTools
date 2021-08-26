@@ -25,7 +25,7 @@ export default function Schedule() {
       <Spin spinning={loading}>
         {!loading &&
           schedule[0].map((i) => (
-            <div className={styles.single}>
+            <div className={'single'}>
               <p>{i}</p>
             </div>
           ))}

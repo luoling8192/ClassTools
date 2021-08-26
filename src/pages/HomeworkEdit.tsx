@@ -43,7 +43,7 @@ export default function HomeworkEditPage() {
         <Form layout={'vertical'} form={form} className={styles.form}>
           {subjects.map((i) => (
             <Form.Item key={i} label={subject_name[i]} name={i}>
-              <Input.TextArea rows={1} />
+              <Input.TextArea autoSize />
             </Form.Item>
           ))}
 

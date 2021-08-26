@@ -40,9 +40,11 @@ export default function Homework() {
           subjects.map((i) => {
             if (homework[i] !== '')
               return (
-                <div className={styles.single}>
+                <div className={'single'} key={i}>
                   <h2>{subject_name[i]}</h2>
-                  <p>{homework[i]}</p>
+                  {homework[i].split('\n').map((k: string) => (
+                    <p key={k}>{k}</p>
+                  ))}
                 </div>
               );
           })}
