@@ -8,4 +8,5 @@ export default defineConfig({
   routes: routes,
   fastRefresh: {},
   mfsu: {},
+  history: { type: 'hash' },
 });

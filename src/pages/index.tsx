@@ -1,4 +1,5 @@
 import Gaokao from '@/components/gaokao';
+import Hitokoto from '@/components/hitokoto';
 import Homework from '@/components/homework';
 import Schedule from '@/components/schedule';
 import Weather from '@/components/weather';
@@ -16,7 +17,9 @@ export default function IndexPage() {
           <Weather />
         </Row>
       </Col>
-      <Col span={8}></Col>
+      <Col span={8}>
+        <Hitokoto />
+      </Col>
       <Col span={6}>
         <Homework />
       </Col>

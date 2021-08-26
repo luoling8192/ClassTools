@@ -8,7 +8,6 @@ export default function Weather() {
     setLoading(false);
   }
 
-  // @ts-ignore
   return (
     <div className={'box'}>
       <Spin spinning={loading}>
@@ -19,7 +18,7 @@ export default function Weather() {
           scrolling="no"
           width="400"
           height="790"
-          allowtransparency="true"
+          allowTransparency={true}
           style={{ background: 'transparent' }}
           onLoad={onload}
         />

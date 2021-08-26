@@ -6,11 +6,13 @@
 API在[ClassTools-Backend](https://github.com/rain15z3/ClassTools-Backend)。
 
 # 效果图
-![preview](./preview/1.jpeg)
+![preview](./preview/preview.png)
 
 # 看板功能
-- [x] 作业获取
-- [ ] 标语获取
+
+- [x] 作业
+- [ ] 标语
+- [x] 天气
 - [x] 课程表
 - [x] 高考倒计时
 - [x] 作业修改
