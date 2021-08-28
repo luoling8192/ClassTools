@@ -3,8 +3,7 @@
   "description": "一个简单的班级管理系统（看板）",
   "version": "1.0.0",
   "author": "RainbowBird <rbxin2003@outlook.com>",
-  "private": false,
-  "license": "GPL",
+  "private": true,
   "dependencies": {
     "antd": "^4.16.13",
     "axios": "^0.21.1",
