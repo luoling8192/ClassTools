@@ -6,19 +6,28 @@
 # This workflow will install Deno then run Deno lint and test.
 # For more information see: https://github.com/denoland/setup-deno
 
-name: Build
+name: CI
 
-on: push
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 15.x]
+    
     steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
         run: yarn install
       - name: Build
-        run: yarn build
+        run: npm run build
       - name: action-zip
         uses: montudor/action-zip@v1.0.0
         with:
