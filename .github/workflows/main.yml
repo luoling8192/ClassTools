@@ -25,9 +25,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install Dependencies
-        run: yarn install
+        run: npm ci
       - name: Build
-        run: npm run build
+        run: CI=false npm run build
       - name: action-zip
         uses: montudor/action-zip@v1.0.0
         with:
