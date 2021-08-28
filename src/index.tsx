@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import HomeworkEditPage from './pages/HomeworkEdit';
 import App from './pages/index';
+import './styles/global.scss';
 
 moment('zh-cn');
 

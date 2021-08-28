@@ -3,7 +3,6 @@ import Gaokao from '../components/gaokao';
 import Homework from '../components/homework';
 import Schedule from '../components/schedule';
 import Weather from '../components/weather';
-import '../styles/global.scss';
 
 export default function IndexPage() {
   return (
