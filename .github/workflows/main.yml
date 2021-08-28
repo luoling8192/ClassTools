@@ -14,23 +14,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        node-version: [14.x]
-    
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.3.0
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install Dependencies
-        run: yarn install
+          cache: yarn
+      - run: yarn install
       - name: Build
         run: CI=false npm run build
-      - name: action-zip
-        uses: montudor/action-zip@v1.0.0
+      - uses: actions/upload-artifact@v2
         with:
-          args: zip -qq build.zip -d build
+          name: build
+          path: build/
     
   
