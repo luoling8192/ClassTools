@@ -21,7 +21,7 @@ export default function Weather() {
     };
 
     fetchSource();
-    setInterval(fetchSource, 1000);
+    //setInterval(fetchSource, 1000);
   }, []);
 
   function onload() {

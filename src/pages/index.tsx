@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Button, Col, Row } from 'antd';
 import Gaokao from '../components/gaokao';
 import Homework from '../components/homework';
 import Schedule from '../components/schedule';
@@ -6,12 +6,16 @@ import Weather from '../components/weather';
 import '../styles/global.scss';
 
 export default function IndexPage() {
-  // TODO: 路由 -> 布置作业
   return (
     <Row className={'wrapper'}>
       <Col span={4} />
       <Col span={4}>
-        <Gaokao />
+        <Row>
+          <Gaokao />
+        </Row>
+        <Row>
+          <Button onClick={() => window.location.reload()}>刷新页面</Button>
+        </Row>
       </Col>
       <Col span={8}>
         <Weather />

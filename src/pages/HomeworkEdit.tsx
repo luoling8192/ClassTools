@@ -1,7 +1,6 @@
 import { Button, Form, Input, Modal, notification, Spin } from 'antd';
 import { useEffect, useState } from 'react';
 import { subject_name, subjects } from '../components/homework';
-import '../styles/global.scss';
 import { fetch } from '../utils/fetch';
 
 export default function HomeworkEditPage() {
@@ -21,7 +20,7 @@ export default function HomeworkEditPage() {
   async function submit() {
     const data = form.getFieldsValue();
     await fetch('/homework', data, 'post');
-    notification.success({ message: '提交成功' });
+    notification.success({message: '提交成功'});
   }
 
   async function reset() {
@@ -30,7 +29,7 @@ export default function HomeworkEditPage() {
       async onOk() {
         form.resetFields();
         await submit();
-        notification.success({ message: '清除成功' });
+        notification.success({message: '清除成功'});
       },
     });
   }

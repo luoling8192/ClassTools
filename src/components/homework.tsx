@@ -30,7 +30,7 @@ export default function Homework() {
     };
 
     fetchSource();
-    setInterval(fetchSource, 1000);
+    //setInterval(fetchSource, 1000);
   }, []);
 
   return (
