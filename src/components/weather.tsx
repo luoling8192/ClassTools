@@ -6,7 +6,6 @@ import { fetch } from '../utils/fetch';
 export default function Weather() {
   const [loading, setLoading] = useState(true);
 
-  // TODO: API内获取
   const [city, setCity] = useState('CN101240102');
   const [key, setKey] = useState('0b23abc522ab4c15804ace26ef307466');
 
