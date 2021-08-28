@@ -1,6 +1,7 @@
 import { Spin } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/global.scss';
+import { fetch } from '../utils/fetch';
 
 export default function Weather() {
   const [loading, setLoading] = useState(true);
@@ -8,6 +9,20 @@ export default function Weather() {
   // TODO: API内获取
   const [city, setCity] = useState('CN101240102');
   const [key, setKey] = useState('0b23abc522ab4c15804ace26ef307466');
+
+  useEffect(() => {
+    const fetchSource = async () => {
+      let json: any = await fetch('/weather');
+
+      if (json.success) {
+        setCity(json.data['city']);
+        setKey(json.data['key']);
+      }
+    };
+
+    fetchSource();
+    setInterval(fetchSource, 1000);
+  }, []);
 
   function onload() {
     setLoading(false);

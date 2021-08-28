@@ -18,9 +18,11 @@ export async function fetch(
 
     let json: RET_JSON = res.data;
 
+    console.log(json);
+
     if (json['success'] !== 1) {
       notification.error({
-        message: 'Error',
+        message: `获取${json['router']}失败！`,
         description: json['err'] || 'Unknown',
       });
     }

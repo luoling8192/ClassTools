@@ -19,7 +19,7 @@ export default function Schedule() {
 
     fetchSource();
     setInterval(fetchSource, 1000);
-  });
+  }, []);
 
   return (
     <div className={`box`} style={{textAlign: 'center'}}>
