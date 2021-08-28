@@ -1,9 +1,8 @@
-import { subject_name, subjects } from '@/components/homework';
-import '@/styles/global.less';
-import styles from '@/styles/HomeworkEdit.less';
-import { fetch } from '@/utils/fetch';
 import { Button, Form, Input, Modal, notification, Spin } from 'antd';
 import { useEffect, useState } from 'react';
+import { subject_name, subjects } from '../components/homework';
+import '../styles/global.scss';
+import { fetch } from '../utils/fetch';
 
 export default function HomeworkEditPage() {
   const [loading, setLoading] = useState(true);
@@ -39,15 +38,15 @@ export default function HomeworkEditPage() {
   return (
     <Spin spinning={loading} size={'large'}>
       <div className={'wrapper'}>
-        <h1 style={{ textAlign: 'center' }}>作业编辑</h1>
-        <Form layout={'vertical'} form={form} className={styles.form}>
+        <h1 style={{textAlign: 'center'}}>作业编辑</h1>
+        <Form layout={'vertical'} form={form} style={{textAlign: 'right', width: '40vw', margin: '0 auto'}}>
           {subjects.map((i) => (
             <Form.Item key={i} label={subject_name[i]} name={i}>
               <Input.TextArea autoSize />
             </Form.Item>
           ))}
 
-          <Form.Item style={{ textAlign: 'right' }}>
+          <Form.Item>
             <Button.Group>
               <Button onClick={reset}>清空</Button>
               <Button onClick={submit} htmlType={'submit'}>

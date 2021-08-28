@@ -1,7 +1,7 @@
-import common from '@/utils/common';
-import { getRetJSON, RET_JSON } from '@/utils/types';
 import { notification } from 'antd';
 import * as querystring from 'querystring';
+import common from './common';
+import { getRetJSON, RET_JSON } from './types';
 
 export async function fetch(
   url: string,
@@ -26,12 +26,12 @@ export async function fetch(
     }
 
     return json;
-  } catch (e) {
+  } catch (e: any) {
     notification.error({
       message: 'Error',
       description: e.toString(),
     });
 
-    return getRetJSON({ err: e.toString() });
+    return getRetJSON({err: e.toString()});
   }
 }

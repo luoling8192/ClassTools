@@ -1,7 +1,7 @@
-import styles from '@/styles/schedule.less';
-import { fetch } from '@/utils/fetch';
 import { Spin } from 'antd';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import '../styles/global.scss';
+import { fetch } from '../utils/fetch';
 
 export default function Schedule() {
   const [loading, setLoading] = useState(true);
@@ -18,17 +18,18 @@ export default function Schedule() {
     };
 
     fetchSource();
-  }, []);
+    setInterval(fetchSource, 1000);
+  });
 
   return (
-    <div className={`box ${styles.box}`}>
+    <div className={`box`} style={{textAlign: 'center'}}>
       <Spin spinning={loading}>
         {!loading &&
-          schedule[0].map((i) => (
-            <div className={'single'}>
-              <p>{i}</p>
-            </div>
-          ))}
+        schedule[0].map((i) => (
+          <div className={'single'}>
+            <p>{i}</p>
+          </div>
+        ))}
       </Spin>
     </div>
   );

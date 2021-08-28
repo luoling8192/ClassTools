@@ -1,8 +1,8 @@
-import styles from '@/styles/gaokao.less';
-import { fetch } from '@/utils/fetch';
 import { Spin } from 'antd';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import '../styles/global.scss';
+import { fetch } from '../utils/fetch';
 
 export default function Gaokao() {
   const [loading, setLoading] = useState(true);
@@ -19,6 +19,7 @@ export default function Gaokao() {
     };
 
     fetchSource();
+    //setInterval(fetchSource, 1000);
   }, []);
 
   return (
@@ -27,7 +28,7 @@ export default function Gaokao() {
       <Spin spinning={loading}>
         {!loading && (
           <p>
-            距离高考<span className={styles.gaokao}>{gaokao}</span>天
+            距离高考<span style={{color: 'red', fontSize: 'xx-large'}}>{gaokao}</span>天
           </p>
         )}
       </Spin>

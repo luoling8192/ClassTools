@@ -1,7 +1,7 @@
-import styles from '@/styles/homework.less';
-import { fetch } from '@/utils/fetch';
 import { Spin } from 'antd';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import '../styles/global.scss';
+import { fetch } from '../utils/fetch';
 
 export const subject_name: any = {
   ch: '语文',
@@ -31,23 +31,23 @@ export default function Homework() {
 
     fetchSource();
     setInterval(fetchSource, 1000);
-  }, []);
+  });
 
   return (
-    <div className={`box ${styles.box}`}>
+    <div className={`box`}>
       <Spin spinning={loading}>
         {!loading &&
-          subjects.map((i) => {
-            if (homework[i] !== '')
-              return (
-                <div className={'single'} key={i}>
-                  <h2>{subject_name[i]}</h2>
-                  {homework[i].split('\n').map((k: string) => (
-                    <p key={k}>{k}</p>
-                  ))}
-                </div>
-              );
-          })}
+        subjects.map((i) => {
+          if (homework[i] !== '')
+            return (
+              <div className={'single'} key={i}>
+                <h2>{subject_name[i]}</h2>
+                {homework[i].split('\n').map((k: string) => (
+                  <p key={k} style={{marginLeft: '2em'}}>{k}</p>
+                ))}
+              </div>
+            );
+        })}
       </Spin>
     </div>
   );

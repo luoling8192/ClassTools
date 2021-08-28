@@ -1,24 +1,20 @@
-import Gaokao from '@/components/gaokao';
-import Hitokoto from '@/components/hitokoto';
-import Homework from '@/components/homework';
-import Schedule from '@/components/schedule';
-import Weather from '@/components/weather';
-import '@/styles/global.less';
 import { Col, Row } from 'antd';
+import Gaokao from '../components/gaokao';
+import Homework from '../components/homework';
+import Schedule from '../components/schedule';
+import Weather from '../components/weather';
+import '../styles/global.scss';
 
 export default function IndexPage() {
+  // TODO: 路由 -> 布置作业
   return (
     <Row className={'wrapper'}>
-      <Col span={8}>
-        <Row justify={'center'}>
-          <Gaokao />
-        </Row>
-        <Row justify={'center'}>
-          <Weather />
-        </Row>
+      <Col span={4} />
+      <Col span={4}>
+        <Gaokao />
       </Col>
       <Col span={8}>
-        <Hitokoto />
+        <Weather />
       </Col>
       <Col span={6}>
         <Homework />
