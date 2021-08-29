@@ -19,7 +19,7 @@ export default function Gaokao() {
     };
 
     fetchSource();
-    //setInterval(fetchSource, 1000);
+    setInterval(fetchSource, 3000);
   }, []);
 
   return (

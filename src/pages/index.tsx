@@ -1,4 +1,4 @@
-import { Button, Col, Row } from 'antd';
+import { Col, Row } from 'antd';
 import Gaokao from '../components/gaokao';
 import Homework from '../components/homework';
 import Schedule from '../components/schedule';
@@ -11,9 +11,6 @@ export default function IndexPage() {
       <Col span={4}>
         <Row>
           <Gaokao />
-        </Row>
-        <Row>
-          <Button onClick={() => window.location.reload()}>刷新页面</Button>
         </Row>
       </Col>
       <Col span={8}>
