@@ -10,10 +10,14 @@ export const subject_name: any = {
   phy: '物理',
   chem: '化学',
   bio: '生物',
+  pol: '政治',
+  his: '历史',
+  geo: '地理',
+  other: '其它',
   ban: '班务',
 };
 
-export const subjects = ['ch', 'ma', 'en', 'phy', 'chem', 'bio', 'ban'];
+export const subjects = ['ch', 'ma', 'en', 'phy', 'chem', 'bio', 'pol', 'his', 'geo', 'ban', 'other'];
 
 export default function Homework() {
   const [homework, setHomework]: any = useState({});

@@ -13,7 +13,7 @@ export async function fetch(
       method: method,
       url: url,
       params: query,
-      data: querystring.stringify(query),
+      data: querystring.stringify({'data': JSON.stringify(query) || ''}),
     });
 
     let json: RET_JSON = res.data;
