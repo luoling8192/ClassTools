@@ -25,7 +25,7 @@ export default function Schedule() {
     <div className={`box`} style={{textAlign: 'center'}}>
       <Spin spinning={loading}>
         {!loading &&
-        schedule[0].map((i) => (
+        schedule.map((i) => (
           <div className={'single'}>
             <p>{i}</p>
           </div>
