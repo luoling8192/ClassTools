@@ -10,15 +10,18 @@ export default function SettingsPage() {
   useEffect(() => {
     const fetchSource = async () => {
       let json: any = await fetch('/settings', subject_name);
-      setLoading(false);
 
-      json.data['weather-city'] = json.data['weather'].city;
+      if (json['success'] === 1) {
+        setLoading(false);
 
-      json.data['schedule'] = json.data['schedule'].map((i: any) =>
-        i.toString().replaceAll(',', ' '),
-      );
+        json.data['weather-city'] = json.data['weather'].city;
 
-      form.setFieldsValue(json.data);
+        json.data['schedule'] = json.data['schedule'].map((i: any) =>
+          i.toString().replaceAll(',', ' '),
+        );
+
+        form.setFieldsValue(json.data);
+      }
     };
 
     fetchSource();

@@ -10,8 +10,11 @@ export default function HomeworkEditPage() {
   useEffect(() => {
     const fetchSource = async () => {
       let json: any = await fetch('/homework', subject_name);
-      setLoading(false);
-      form.setFieldsValue(json.data);
+
+      if (json['success'] === 1) {
+        setLoading(false);
+        form.setFieldsValue(json.data);
+      }
     };
 
     fetchSource();
