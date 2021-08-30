@@ -20,4 +20,8 @@ API在[ClassTools-Backend](https://github.com/rain15z3/ClassTools-Backend)。
 - [x] 作业修改
 - [ ] 标语修改
 - [x] 壁纸更换
+- [x] 设置
 
+# Thanks to
+
+感谢 [@Clansty](https://github.com/Clansty) 姐姐的支持和帮助！ 灵感来源：[C8UI](https://github.com/Clansty/C8UI)
