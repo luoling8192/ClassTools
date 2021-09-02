@@ -21,6 +21,7 @@ API在[ClassTools-Backend](https://github.com/rain15z3/ClassTools-Backend)。
 - [ ] 标语修改
 - [x] 壁纸更换
 - [x] 设置
+- [ ] 事件更换
 
 # Thanks to
 
