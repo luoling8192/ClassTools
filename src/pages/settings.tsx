@@ -1,6 +1,5 @@
-import { Button, Form, Input, notification, Spin } from 'antd';
+import { Button, Form, Input, notification, Slider, Spin } from 'antd';
 import { useEffect, useState } from 'react';
-import { subject_name } from '../components/homework';
 import { fetch } from '../utils/fetch';
 
 export default function SettingsPage() {
@@ -9,7 +8,7 @@ export default function SettingsPage() {
 
   useEffect(() => {
     const fetchSource = async () => {
-      let json: any = await fetch('/settings', subject_name);
+      let json: any = await fetch('/settings');
 
       if (json['success'] === 1) {
         setLoading(false);
@@ -20,6 +19,7 @@ export default function SettingsPage() {
           i.toString().replaceAll(',', ' '),
         );
 
+        console.log(json.data);
         form.setFieldsValue(json.data);
       }
     };
@@ -37,7 +37,7 @@ export default function SettingsPage() {
     data['weather'] = {'city': data['weather-city']};
     delete data['weather-city'];
 
-    console.log(data);
+    console.log(form.getFieldsValue());
     await fetch('/settings', data, 'post');
     notification.success({message: '提交成功'});
   }
@@ -53,7 +53,7 @@ export default function SettingsPage() {
           <Form.Item label={'高考日期'} name={'gaokao-date'}>
             <Input />
           </Form.Item>
-          <Form.Item label={'课程表'} style={{marginBottom: 0}}>
+          <Form.Item label={'课程表(使用空格分割)'} style={{marginBottom: 0}}>
             <Form.List name={'schedule'}>
               {
                 i => i.map((k) =>
@@ -66,6 +66,26 @@ export default function SettingsPage() {
           </Form.Item>
           <Form.Item label={'城市'} name={'weather-city'}>
             <Input />
+          </Form.Item>
+          <Form.Item label={'壁纸 使用文件请用url(...) 使用颜色请用red,#fff,rgb(255,255,255)'} name={'wallpaper'}>
+            { // TODO: RGB or URL switcher
+              /*
+              <Row>
+                <Col span={6}>
+                  <Select defaultValue={'url'} style={{textAlign: 'left'}}>
+                    <Select.Option value={'url'}>URL</Select.Option>
+                    <Select.Option value={'rgb'}>RGB HEX eg.(#ffffff)</Select.Option>
+                  </Select>
+                </Col>
+                <Col span={18}>
+                  <Input />
+                </Col>
+              </Row>
+            */}
+            <Input />
+          </Form.Item>
+          <Form.Item label={'字体大小'} name={'font-size'}>
+            <Slider />
           </Form.Item>
 
           <Button htmlType={'submit'} onClick={submit}>提交</Button>

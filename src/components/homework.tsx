@@ -19,7 +19,7 @@ export const subject_name: any = {
 
 export const subjects = ['ch', 'ma', 'en', 'phy', 'chem', 'bio', 'pol', 'his', 'geo', 'ban', 'other'];
 
-export default function Homework() {
+export default function Homework({fontSize}: any) {
   const [homework, setHomework]: any = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -45,9 +45,9 @@ export default function Homework() {
           if (homework[i] !== '')
             return (
               <div className={'single'} key={i}>
-                <h2>{subject_name[i]}</h2>
+                <h2 style={{fontSize: fontSize}}>{subject_name[i]}</h2>
                 {homework[i].split('\n').map((k: string) => (
-                  <p key={k} style={{marginLeft: '2em'}}>{k}</p>
+                  <p key={k} style={{marginLeft: '2em', fontSize: fontSize}}>{k}</p>
                 ))}
               </div>
             );

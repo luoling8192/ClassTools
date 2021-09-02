@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/global.scss';
 import { fetch } from '../utils/fetch';
 
-export default function Schedule() {
+export default function Schedule({fontSize}: any) {
   const [loading, setLoading] = useState(true);
   const [schedule, setSchedule] = useState([[]]);
 
@@ -27,7 +27,7 @@ export default function Schedule() {
         {!loading &&
         schedule.map((i) => (
           <div className={'single'}>
-            <p>{i}</p>
+            <p style={{fontSize: fontSize}}>{i}</p>
           </div>
         ))}
       </Spin>
