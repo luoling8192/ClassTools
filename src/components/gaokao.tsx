@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import '../styles/global.scss';
 import { fetch } from '../utils/fetch';
 
-export default function Gaokao() {
+export default function Gaokao({fontSize}: any) {
   const [loading, setLoading] = useState(true);
   const [gaokao, setGaokao] = useState(100);
 
@@ -24,11 +24,11 @@ export default function Gaokao() {
 
   return (
     <div className={'box'}>
-      <p>{moment(Date.now()).format('YYYY年MM月DD日')}</p>
+      <p style={{fontSize: fontSize}}>{moment(Date.now()).format('YYYY年MM月DD日')}</p>
       <Spin spinning={loading}>
         {!loading && (
-          <p>
-            距离高考<span style={{color: 'red', fontSize: 'xx-large'}}>{gaokao}</span>天
+          <p style={{fontSize: fontSize}}>
+            距离高考<span style={{color: 'red', fontSize: fontSize}}>{gaokao}</span>天
           </p>
         )}
       </Spin>
