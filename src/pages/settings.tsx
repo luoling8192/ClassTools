@@ -30,7 +30,8 @@ export default function SettingsPage() {
   async function submit() {
     let data: any = form.getFieldsValue();
     data['schedule'] = data['schedule'].map((i: any) =>
-      i.trim().replace(/\s{2,}/g, ' ').split(' '), // 正则表达式yyds
+        i.split(' '),
+      //i.trim().replace(/\s{2,}/g, ' ').split(' '), // 正则表达式yyds
     );
 
     data['weather'] = {'city': data['weather-city']};
