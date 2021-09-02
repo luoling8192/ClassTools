@@ -7,6 +7,9 @@ import { fetch } from '../utils/fetch';
 export default function Gaokao({fontSize}: any) {
   const [loading, setLoading] = useState(true);
   const [gaokao, setGaokao] = useState(100);
+  const [time, setTime] = useState(moment(Date.now()).format('LTS'));
+  const weekday = parseInt(moment(Date.now()).weekday().toString());
+  let weekdays_list: any = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   useEffect(() => {
     const fetchSource = async () => {
@@ -20,11 +23,13 @@ export default function Gaokao({fontSize}: any) {
 
     fetchSource();
     setInterval(fetchSource, 3000);
+    setInterval(() => setTime(moment(Date.now()).format('LTS')), 1000);
   }, []);
 
   return (
     <div className={'box'}>
-      <p style={{fontSize: fontSize}}>{moment(Date.now()).format('YYYY年MM月DD日')}</p>
+      <p style={{fontSize: fontSize}}>{moment(Date.now()).format('YY/MM/DD')}&nbsp;{weekdays_list[weekday]}</p>
+      <p style={{fontSize: fontSize}}>{time}</p>
       <Spin spinning={loading}>
         {!loading && (
           <p style={{fontSize: fontSize}}>
