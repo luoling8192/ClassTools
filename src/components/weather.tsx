@@ -36,7 +36,6 @@ export default function Weather() {
           frameBorder="0"
           scrolling="no"
           width="400"
-          height="640"
           allowTransparency={true}
           style={{ background: 'transparent' }}
           onLoad={onload}

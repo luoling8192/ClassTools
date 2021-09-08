@@ -7,6 +7,7 @@ import { fetch } from '../utils/fetch';
 export default function Gaokao({fontSize}: any) {
   const [loading, setLoading] = useState(true);
   const [gaokao, setGaokao] = useState(100);
+  const [countName, setCountName] = useState('高考');
   const [time, setTime] = useState(moment(Date.now()).format('LTS'));
   const weekday = parseInt(moment(Date.now()).weekday().toString());
   let weekdays_list: any = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -17,6 +18,7 @@ export default function Gaokao({fontSize}: any) {
 
       if (json.success) {
         setLoading(false);
+        setCountName(json.data['name']);
         setGaokao(json.data['span']);
       }
     };
@@ -29,14 +31,14 @@ export default function Gaokao({fontSize}: any) {
   return (
     <div className={'box'}>
       <p style={{fontSize: fontSize}}>{moment(Date.now()).format('YY/MM/DD')}&nbsp;{weekdays_list[weekday]}</p>
-      <p style={{fontSize: fontSize}}>{time}</p>
       <Spin spinning={loading}>
         {!loading && (
           <p style={{fontSize: fontSize}}>
-            距离高考<span style={{color: 'red', fontSize: fontSize}}>{gaokao}</span>天
+            距离{countName}<span style={{color: 'red', fontSize: fontSize}}>{gaokao}</span>天
           </p>
         )}
       </Spin>
+      <p style={{fontSize: fontSize}}>{time}</p>
     </div>
   );
 }

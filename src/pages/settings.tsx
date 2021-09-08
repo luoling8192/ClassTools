@@ -50,7 +50,10 @@ export default function SettingsPage() {
           <Form.Item label={'教室名称'} name={'class-name'}>
             <Input />
           </Form.Item>
-          <Form.Item label={'高考日期'} name={'gaokao-date'}>
+          <Form.Item label={'倒计时名称'} name={'count-name'}>
+            <Input />
+          </Form.Item>
+          <Form.Item label={'倒计时日期'} name={'gaokao-date'}>
             <Input />
           </Form.Item>
           <Form.Item label={'课程表(使用空格分割)'} style={{marginBottom: 0}}>
@@ -85,7 +88,10 @@ export default function SettingsPage() {
             <Input />
           </Form.Item>
           <Form.Item label={'字体大小'} name={'font-size'}>
-            <Slider />
+            <Slider tooltipVisible={true} />
+          </Form.Item>
+          <Form.Item label={'作业字体大小'} name={'homework-font-size'}>
+            <Slider tooltipVisible={true} />
           </Form.Item>
 
           <Button htmlType={'submit'} onClick={submit}>提交</Button>

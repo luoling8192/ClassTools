@@ -7,7 +7,8 @@ import Weather from '../components/weather';
 import { fetch } from '../utils/fetch';
 
 export default function IndexPage() {
-  const [fontSize, setFontSize] = useState(24);
+  const [fontSize, setFontSize] = useState(32);
+  const [homeworkFontSize, setHomeworkFontSize] = useState(24);
 
   useEffect(() => {
     const fetchSource = async () => {
@@ -17,11 +18,12 @@ export default function IndexPage() {
         console.log(json.data['wallpaper']);
         document.body.style.background = json.data['wallpaper'];
         setFontSize(json.data['font-size']);
+        setHomeworkFontSize(json.data['homework-font-size']);
       }
     };
 
     fetchSource();
-    setInterval(fetchSource, 5000);
+    setInterval(fetchSource, 1000);
   }, []);
 
   return (
@@ -36,7 +38,7 @@ export default function IndexPage() {
         <Weather />
       </Col>
       <Col span={6}>
-        <Homework fontSize={fontSize} />
+        <Homework fontSize={homeworkFontSize} />
       </Col>
       <Col span={2}>
         <Schedule fontSize={fontSize} />
