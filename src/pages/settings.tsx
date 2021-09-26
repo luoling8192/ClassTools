@@ -67,7 +67,7 @@ export default function SettingsPage() {
               }
             </Form.List>
           </Form.Item>
-          <Form.Item label={'城市'} name={'weather-city'}>
+          <Form.Item label={'城市 (https://github.com/qwd/LocationList)'} name={'weather-city'}>
             <Input />
           </Form.Item>
           <Form.Item label={'壁纸 使用文件请用url(...) 使用颜色请用red,#fff,rgb(255,255,255)'} name={'wallpaper'}>

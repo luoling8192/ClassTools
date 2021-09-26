@@ -33,11 +33,12 @@ export default function Weather() {
         <iframe
           id={'weather'}
           src={`https://weather-ten-alpha.vercel.app/weather.html?bg=3&md=034&lc=${city}&key=${key}`}
-          frameBorder="0"
-          scrolling="no"
-          width="400"
+          frameBorder={'0'}
+          scrolling={'no'}
+          width={'400'}
+          height={'600'}
           allowTransparency={true}
-          style={{ background: 'transparent' }}
+          style={{background: 'transparent'}}
           onLoad={onload}
         />
       </Spin>
