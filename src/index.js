@@ -1,17 +1,30 @@
+import {ConfigProvider} from 'antd';
+import zhCN from 'antd/lib/locale/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {HashRouter, Route, Routes} from 'react-router-dom';
+import HomeworkEditPage from './pages/homework';
+import App from './pages/index';
+import SettingsPage from './pages/settings';
+import Page404 from './pages/404';
+import './styles/global.css';
+
+moment('zh-cn');
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider locale={zhCN}>
+      <HashRouter>
+        <Routes>
+          <Route path={'/'} element={<App />} />
+          <Route path={'/homework'} element={<HomeworkEditPage />} />
+          <Route path={'/settings'} element={<SettingsPage />} />
+          <Route path={'*'} element={<Page404 />} />
+        </Routes>
+      </HashRouter>
+    </ConfigProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
